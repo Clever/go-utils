@@ -67,3 +67,14 @@ func TestPartition(t *testing.T) {
 	assert.Equal(t, b, []string{"b"})
 	assert.Equal(t, c, []string{"c"})
 }
+
+func TestAddRemoveContains(t *testing.T) {
+	set := New("a", "b")	
+	assert.True(t, set.Contains("a"))
+
+	set.Remove("a")
+	assert.False(t, set.Contains("a"))
+
+	set.Add("a")
+	assert.True(t, set.Contains("a"))
+}
