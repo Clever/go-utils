@@ -5,13 +5,18 @@ package stringset
 // of zero and make it fairly clear that this shouldn't be treated as a map.
 type StringSet map[string]struct{}
 
-// FromList converts a list of strings a StringSet
-func FromList(strings []string) StringSet {
+// New creates a new stringset with the specified strings in it
+func New(strings ...string) StringSet {
 	set := make(map[string]struct{}, len(strings))
 	for _, str := range strings {
 		set[str] = struct{}{}
 	}
 	return set
+}
+
+// FromList converts a list of strings a StringSet
+func FromList(strings []string) StringSet {
+	return New(strings...)
 }
 
 // FromInterfaceList converts a list of interfaces that are known to be strings into a StringSet
@@ -87,6 +92,22 @@ func (s1 StringSet) Equals(s2 StringSet) bool {
 		}
 	}
 	return true
+}
+
+// Add adds an element to a string set
+func (s StringSet) Add(str string) {
+	s[str] = struct{}{}
+}
+
+// Delete removes an element from a string set
+func (s StringSet) Remove(str string) {
+	delete(s, str)
+}
+
+// Contains returns true if a stringset contains the specified string
+func (s StringSet) Contains(str string) bool {
+	_, ok := s[str]
+	return ok
 }
 
 // Partition takes in two string slices and returns a tuple with (strings only in the first set,
