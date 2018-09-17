@@ -113,11 +113,11 @@ func (s StringSet) Contains(str string) bool {
 // Partition takes in two string slices and returns a tuple with (strings only in the first set,
 // strings in both sets, strings only in the second set). It is a utility function that uses the
 // set implmentation
-func Partition(s1, s2 []string) ([]string, []string, []string) {
+func Partition(s1, s2 []string) (only1 []string, both []string, only2 []string) {
 	set1 := FromList(s1)
 	set2 := FromList(s2)
-	only1 := set1.Minus(set2)
-	both := set1.Intersect(set2)
-	only2 := set2.Minus(set1)
-	return only1.ToList(), both.ToList(), only2.ToList()
+	only1 = set1.Minus(set2).ToList()
+	both = set1.Intersect(set2).ToList()
+	only2 = set2.Minus(set1).ToList()
+	return
 }
