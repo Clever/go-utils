@@ -116,8 +116,5 @@ func (s StringSet) Contains(str string) bool {
 func Partition(s1, s2 []string) (only1 []string, both []string, only2 []string) {
 	set1 := FromList(s1)
 	set2 := FromList(s2)
-	only1 = set1.Minus(set2).ToList()
-	both = set1.Intersect(set2).ToList()
-	only2 = set2.Minus(set1).ToList()
-	return
+	return set1.Minus(set2).ToList(), set1.Intersect(set2).ToList(), set2.Minus(set1).ToList()
 }
