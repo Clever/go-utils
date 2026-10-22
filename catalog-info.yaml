@@ -3,9 +3,9 @@ kind: Component
 metadata:
   name: go-utils
   description: collection of small packages with useful, common behavior
-  owner: unknown
+  owner: eng-infra
 spec:
   type: unknown
   lifecycle: production
-  owner: unknown
+  owner: eng-infra
   system: Clever
